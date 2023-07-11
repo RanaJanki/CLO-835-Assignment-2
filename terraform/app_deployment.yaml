@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  labels : 
+    app: employ
+  namespace:  webapplication
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: employees
+  template:
+    metadata:
+      labels:
+        app: employees
+    spec:
+      containers:
+      - name: employeesapp
+        image: 019820965776.dkr.ecr.us-east-1.amazonaws.com/assignment2:appv1.0
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        env:
+        - name: DBHOST
+          value : "10.244.0.3"
+        - name: DBUSER
+          value : "root"
+        - name: DBPWD
+          value : "janki"
+        - name: DBPORT
+          value : "3306"

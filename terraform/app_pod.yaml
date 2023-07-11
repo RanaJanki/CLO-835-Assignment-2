@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: employ
+  name: app-pod
+  namespace:  webapplication
+spec:
+  containers:
+  - name: employeesapp
+    image: 019820965776.dkr.ecr.us-east-1.amazonaws.com/assignment2:appv1.0
+    ports: 
+    - containerPort: 8080
+      protocol: TCP
+    env:
+    - name: DBHOST
+      value : "10.244.0.3"
+    - name: DBUSER
+      value : "root"
+    - name: DBPWD
+      value : "janki"
+    - name: DBPORT
+      value : "3306"
