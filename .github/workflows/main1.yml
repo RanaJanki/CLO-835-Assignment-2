@@ -38,7 +38,7 @@ jobs:
     - name: Tag and push MySQL Docker image to ECR
       env:
        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-       ECR_REPOSITORY: my-ecr-repo
+       ECR_REPOSITORY: assignment-2
        IMAGE_TAG: appdb1.0
       run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile_mysql .
@@ -48,7 +48,7 @@ jobs:
     - name: Tag and push MySQL Docker image to ECR
       env:
        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-       ECR_REPOSITORY: my-ecr-repo
+       ECR_REPOSITORY: assignment-2
        IMAGE_TAG: appv1.0
       run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile .
